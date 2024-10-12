@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css"; // Any global styles
 
@@ -7,10 +7,9 @@ import GetStarted from "./components/getstarted"; // Ensure the correct path to 
 import SignupSignin from "./components/SignupSignin";
 import HomePage from "./components/HomePage";
 
-const App: React.FC = () => {
-  const basename = "/aws-wordpress-hosting";
+function App() {
   return (
-    <Router basename={basename}>
+    <Router>
       <div className="App">
         <Routes>
           <Route path="/" element={<SignupSignin />} />
@@ -20,6 +19,6 @@ const App: React.FC = () => {
       </div>
     </Router>
   );
-};
+}
 
 export default App;
