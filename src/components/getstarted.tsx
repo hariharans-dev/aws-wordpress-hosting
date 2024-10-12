@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "./style/GetStarted.css"; // Import your CSS file
+// import "./style/GetStarted.css"; // Import your CSS file
 import { SendRequest } from "./functions/SendRequest";
 import { useNavigate } from "react-router-dom";
 
@@ -26,9 +26,9 @@ const SignupSignin: React.FC = () => {
       }
     }
   };
-  useEffect(() => {
-    checkSessionAndLogin();
-  }, []);
+  // useEffect(() => {
+  //   checkSessionAndLogin();
+  // }, []);
   return (
     <div className="container">
       <div className="forms-container">

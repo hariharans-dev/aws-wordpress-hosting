@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 
+/* Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -11,6 +12,7 @@ input {
   font-family: "Poppins", sans-serif;
 }
 
+/* Container Styles */
 .container {
   position: relative;
   width: 100%;
@@ -19,6 +21,7 @@ input {
   overflow: hidden;
 }
 
+/* Form Container Styles */
 .forms-container {
   position: absolute;
   width: 100%;
@@ -27,6 +30,7 @@ input {
   left: 0;
 }
 
+/* Sign-in and Sign-up Styles */
 .signin-signup {
   position: absolute;
   top: 50%;
@@ -44,7 +48,7 @@ form {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 0rem 5rem;
+  padding: 0 5rem;
   transition: all 0.2s 0.7s;
   overflow: hidden;
   grid-column: 1 / 2;
@@ -60,12 +64,14 @@ form.sign-in-form {
   z-index: 2;
 }
 
+/* Title Styles */
 .title {
   font-size: 2.5rem;
   color: #444;
   margin-bottom: 10px;
 }
 
+/* Input Field Styles */
 .input-field {
   max-width: 380px;
   width: 100%;
@@ -103,6 +109,7 @@ form.sign-in-form {
   font-weight: 500;
 }
 
+/* Social Media Styles */
 .social-text {
   padding: 0.7rem 0;
   font-size: 1rem;
@@ -133,6 +140,7 @@ form.sign-in-form {
   border-color: #b83120;
 }
 
+/* Button Styles */
 .btn {
   width: 150px;
   background-color: #ee6654;
@@ -152,6 +160,8 @@ form.sign-in-form {
 .btn:hover {
   background-color: #f14b35;
 }
+
+/* Panels Styles */
 .panels-container {
   position: absolute;
   height: 100%;
@@ -219,6 +229,7 @@ form.sign-in-form {
   padding: 0.7rem 0;
 }
 
+/* Transparent Button Styles */
 .btn.transparent {
   margin: 0;
   background: none;
@@ -230,12 +241,11 @@ form.sign-in-form {
   font-size: 0.8rem;
 }
 
+/* Animation Styles */
 .right-panel .image,
 .right-panel .content {
   transform: translateX(800px);
 }
-
-/* ANIMATION */
 
 .container.sign-up-mode:before {
   transform: translate(100%, -50%);
@@ -274,6 +284,7 @@ form.sign-in-form {
   pointer-events: all;
 }
 
+/* Responsive Styles */
 @media (max-width: 870px) {
   .container {
     min-height: 800px;
@@ -358,47 +369,6 @@ form.sign-in-form {
 
   .container.sign-up-mode .left-panel .image,
   .container.sign-up-mode .left-panel .content {
-    transform: translateY(-300px);
-  }
-
-  .container.sign-up-mode .right-panel .image,
-  .container.sign-up-mode .right-panel .content {
-    transform: translateY(0px);
-  }
-
-  .right-panel .image,
-  .right-panel .content {
-    transform: translateY(300px);
-  }
-
-  .container.sign-up-mode .signin-signup {
-    top: 5%;
-    transform: translate(-50%, 0);
-  }
-}
-
-@media (max-width: 570px) {
-  form {
-    padding: 0 1.5rem;
-  }
-
-  .image {
-    display: none;
-  }
-  .panel .content {
-    padding: 0.5rem 1rem;
-  }
-  .container {
-    padding: 1.5rem;
-  }
-
-  .container:before {
-    bottom: 72%;
-    left: 50%;
-  }
-
-  .container.sign-up-mode:before {
-    bottom: 28%;
-    left: 50%;
+    transform: translateX(0%);
   }
 }

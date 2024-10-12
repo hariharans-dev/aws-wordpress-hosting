@@ -1,0 +1,66 @@
+.navbar {
+  background-color: #f7543f;
+  padding: 1.5rem 3rem; /* Increased padding for a bigger navbar */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Bigger shadow for a stronger effect */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 4rem; /* Increased gap for more spacing between items */
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem; /* Increased font size */
+  font-weight: 600; /* Slightly bolder font weight */
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  padding-bottom: 0.7rem; /* Slightly larger padding to match font size */
+  position: relative;
+}
+
+.nav-item a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px; /* Increased underline thickness */
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.nav-item a:hover::before {
+  width: 100%;
+}
+
+.nav-item a:hover {
+  color: #fffbe7;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1.2rem 2rem; /* Slightly smaller padding for mobile */
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 2rem; /* Increased gap for stacked items */
+  }
+
+  .nav-item a {
+    font-size: 1.4rem; /* Slightly smaller font size on mobile */
+  }
+}

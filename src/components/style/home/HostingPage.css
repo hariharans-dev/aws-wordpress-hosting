@@ -1,0 +1,99 @@
+/* Basic container styles */
+.hosting-container {
+  padding: 2rem;
+  background-color: #f4f5f7;
+  min-height: 100vh; /* Full page height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Header section styles */
+.hosting-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hosting-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.hosting-subheading {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Hosting content section */
+.hosting-content {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Card styling */
+.hosting-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 300px;
+  flex: 1;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #f7543f;
+  margin-bottom: 1rem;
+}
+
+/* List styles */
+.hosting-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hosting-item {
+  font-size: 1.1rem;
+  color: #333;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.hosting-item:last-child {
+  border-bottom: none;
+}
+
+/* Hosting statistics styling */
+.hosting-card p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.hosting-card p strong {
+  font-size: 1.3rem;
+  color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hosting-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hosting-card {
+    width: 100%;
+    max-width: 400px;
+  }
+}
