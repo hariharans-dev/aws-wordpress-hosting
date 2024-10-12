@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "./style/SignupSignin.css"; // Import your CSS file
 import { SendRequest } from "./functions/SendRequest";
 
-const api_url = process.env.REACT_APP_USER_API_URL || "";
+const apiurl =
+  "https://vzo16sqfhl.execute-api.ap-south-1.amazonaws.com/stage1/user";
 
 const SignupSignin: React.FC = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const SignupSignin: React.FC = () => {
     if (session) {
       const senddata = { request: "session", session: session };
       try {
-        const response = await SendRequest(api_url, "POST", senddata);
+        const response = await SendRequest(apiurl, "POST", senddata);
         const { statusCode } = response;
         if (statusCode === 200) {
           onlogin();
@@ -79,7 +80,7 @@ const SignupSignin: React.FC = () => {
     var senddata = { ...signUpData, request: "register" };
 
     try {
-      const response = await SendRequest(api_url, "POST", senddata);
+      const response = await SendRequest(apiurl, "POST", senddata);
 
       const { statusCode } = response; // Ensure statusCode is a number
       setsignUpStatusCode(statusCode); // Set statusCode properly
@@ -103,7 +104,7 @@ const SignupSignin: React.FC = () => {
 
     try {
       const response = await SendRequest(
-        api_url, // Replace with the correct API URL
+        apiurl, // Replace with the correct API URL
         "POST",
         senddata
       );

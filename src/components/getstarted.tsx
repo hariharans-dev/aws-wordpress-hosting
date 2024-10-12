@@ -3,7 +3,7 @@ import "./style/GetStarted.css"; // Import your CSS file
 import { SendRequest } from "./functions/SendRequest";
 import { useNavigate } from "react-router-dom";
 
-const apiurl = process.env.REACT_APP_USER_API_URL || "";
+const apiurl = "https://vzo16sqfhl.execute-api.ap-south-1.amazonaws.com/stage1/user";
 
 const SignupSignin: React.FC = () => {
   const navigate = useNavigate();
