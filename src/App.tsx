@@ -1,13 +1,24 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-function App() {
+import "./App.css"; // Any global styles
+
+import GetStarted from "./components/getstarted"; // Ensure the correct path to the component
+import SignupSignin from "./components/SignupSignin";
+import HomePage from "./components/HomePage";
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <h1>hello world</h1>
-      <h1>welcome</h1>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<SignupSignin />} />
+          <Route path="/getstarted" element={<GetStarted />} />
+          <Route path="/home" element={<HomePage />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
