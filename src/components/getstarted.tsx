@@ -17,7 +17,7 @@ const SignupSignin: React.FC = () => {
       try {
         const response = await SendRequest(apiurl, "POST", senddata);
         const { statusCode } = response;
-        if (statusCode != 200) {
+        if (statusCode !== 200) {
           tologin();
           sessionStorage.removeItem("session");
         }
