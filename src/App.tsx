@@ -8,8 +8,9 @@ import SignupSignin from "./components/SignupSignin";
 import HomePage from "./components/HomePage";
 
 const App: React.FC = () => {
+  const basename = "/aws-wordpress-hosting";
   return (
-    <Router>
+    <Router basename={basename}>
       <div className="App">
         <Routes>
           <Route path="/" element={<SignupSignin />} />
