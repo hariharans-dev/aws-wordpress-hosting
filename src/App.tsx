@@ -10,6 +10,7 @@ import HostingPage from "./components/Home/HostingPage";
 import PricingPage from "./components/Home/PricingPage";
 import AccountPage from "./components/Home/AccountPage";
 import DashboardPage from "./components/Home/Dashboard";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="pricing" element={<PricingPage />} />
             <Route path="account" element={<AccountPage />} />
           </Route>
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
     </Router>

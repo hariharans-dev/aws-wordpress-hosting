@@ -85,6 +85,14 @@
   color: #333;
 }
 
+.instance-item {
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  font-size: x-large;
+  font-weight: 500;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .dashboard-content {

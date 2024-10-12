@@ -1,14 +1,18 @@
 import { useEffect } from "react";
-// import "./style/GetStarted.css"; // Import your CSS file
+import "./style/GetStarted.css"; // Import your CSS file
 import { SendRequest } from "./functions/SendRequest";
 import { useNavigate } from "react-router-dom";
 
-const apiurl = "https://vzo16sqfhl.execute-api.ap-south-1.amazonaws.com/stage1/user";
+const apiurl =
+  "https://vzo16sqfhl.execute-api.ap-south-1.amazonaws.com/stage1/user";
 
 const SignupSignin: React.FC = () => {
   const navigate = useNavigate();
   const tologin = () => {
     navigate("/");
+  };
+  const tohome = () => {
+    navigate("/home");
   };
   const checkSessionAndLogin = async () => {
     const session = sessionStorage.getItem("session");
@@ -26,9 +30,9 @@ const SignupSignin: React.FC = () => {
       }
     }
   };
-  // useEffect(() => {
-  //   checkSessionAndLogin();
-  // }, []);
+  useEffect(() => {
+    checkSessionAndLogin();
+  }, []);
   return (
     <div className="container">
       <div className="forms-container">
@@ -43,7 +47,9 @@ const SignupSignin: React.FC = () => {
               your needs. Enjoy seamless management, robust performance, and
               exceptional support every step of the way.
             </p>
-            <button className="btn">Get Started Now</button>
+            <button className="btn" onClick={() => tohome()}>
+              Get Started Now
+            </button>
           </div>
         </div>
       </div>

@@ -77,11 +77,10 @@ const SignupSignin: React.FC = () => {
 
   const handleSignUpSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    var senddata = { ...signUpData, request: "register" };
+    var senddata = { ...signUpData, request: "create" };
 
     try {
       const response = await SendRequest(apiurl, "POST", senddata);
-
       const { statusCode } = response; // Ensure statusCode is a number
       setsignUpStatusCode(statusCode); // Set statusCode properly
       if (statusCode === 201) {
@@ -131,9 +130,9 @@ const SignupSignin: React.FC = () => {
           <form onSubmit={handleSignInSubmit} className="sign-in-form">
             <h2 className="title">Sign in</h2>
             <div className="input-field">
-              <i className="fas fa-user"></i>
+              <i className="fas fa-envelope"></i>
               <input
-                type="text"
+                type="email"
                 placeholder="Email"
                 name="email" // Change "Email" to "email"
                 value={signInData.email}
@@ -141,7 +140,7 @@ const SignupSignin: React.FC = () => {
               />
             </div>
             <div className="input-field">
-              <i className="fas fa-lock"></i>
+              <i className="fas fa-envelope"></i>
               <input
                 type="password"
                 placeholder="Password"
