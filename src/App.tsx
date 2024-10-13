@@ -13,8 +13,6 @@ import ErrorPage from "./components/ErrorPage";
 function App() {
   return (
     <Router>
-      {" "}
-      {/* No basename */}
       <div className="App">
         <Routes>
           <Route path="/" element={<SignupSignin />} />
@@ -25,7 +23,8 @@ function App() {
             <Route path="pricing" element={<PricingPage />} />
             <Route path="account" element={<AccountPage />} />
           </Route>
-          <Route element={<ErrorPage />} />
+          <Route path="*" element={<ErrorPage />} />{" "}
+          {/* Catch-all route for undefined paths */}
         </Routes>
       </div>
     </Router>
