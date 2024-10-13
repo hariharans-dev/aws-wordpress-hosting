@@ -224,6 +224,34 @@ select:focus {
   color: #f7543f; /* Color for strong text */
 }
 
+button {
+  margin: 10px;
+}
+
+.side-window {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 500px;
+  height: 50%;
+  background: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  padding: 20px;
+}
+
+.side-window-content {
+  overflow-y: auto;
+}
+
+.close-button {
+  background: red;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .dashboard-content {

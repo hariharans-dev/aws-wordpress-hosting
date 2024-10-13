@@ -22,11 +22,27 @@ const HostingPage: React.FC = () => {
   const [domainType, setDomainType] = useState("public"); // State for domain type
   const [customDomain, setCustomDomain] = useState(""); // State for custom domain
 
+  const [isSideWindowOpen, setIsSideWindowOpen] = useState(false);
+  const [selectedInstance, setSelectedInstance] = useState<Instance[] | null>(
+    null
+  );
+
   const [triggerVariable, setTriggerVariable] = useState(0);
   const [loading, setLoading] = useState(true); // Loading state
   const hasRun = useRef(false);
 
   const session = sessionStorage.getItem("session");
+
+  interface Instance {
+    State: string;
+    PublicIpAddress: string;
+    PublicDnsName: string; // Adjust this type if timestamp is a different type
+  }
+
+  interface SideWindowProps {
+    instance: Instance | null; // Can be null if no instance is selected
+    onClose: () => void; // Function to close the side window
+  }
 
   const instancedata = async () => {
     const senddata = { request: "search", session: session };
@@ -79,7 +95,6 @@ const HostingPage: React.FC = () => {
       console.error("Error:", error);
     }
   };
-
   const handledeletewebsite = async (instance_name: string) => {
     const senddata = {
       request: "delete",
@@ -99,6 +114,24 @@ const HostingPage: React.FC = () => {
         setdeletepageresponseType("error");
       }
       reloadData("delete");
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+  const handleshowwebsite = async (instance: string) => {
+    const senddata = {
+      request: "describe",
+      session: session,
+      instance_name: instance,
+    };
+
+    try {
+      const response = await SendRequest(apiurl_instance, "POST", senddata);
+      const { statusCode, body } = response;
+
+      // Set selected instance details and open the side window
+      setSelectedInstance(body);
+      setIsSideWindowOpen(true);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -135,9 +168,35 @@ const HostingPage: React.FC = () => {
         setLoading(false); // Set loading to false after fetching
       }
     };
-
     fetchData();
   }, [triggerVariable]);
+
+  const SideWindow: React.FC<SideWindowProps> = ({ instance, onClose }) => {
+    return (
+      <div className="side-window">
+        <div className="side-window-content">
+          <button className="close-button" onClick={onClose}>
+            Close
+          </button>
+          {instance && (
+            <>
+              <h2>Instance Details</h2>
+              <p>
+                <strong>State:</strong> {instance.State}
+              </p>
+              <p>
+                <strong>Public IP Address:</strong> {instance.PublicIpAddress}
+              </p>
+              <p>
+                <strong>Public DNS Name:</strong> {instance.PublicDnsName}
+              </p>
+            </>
+          )}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="dashboard-container">
       <div className="dashboard-header">
@@ -250,11 +309,11 @@ const HostingPage: React.FC = () => {
         <div className="dashboard-content">
           <div className="dashboard-card manage-websites-panel">
             <h2 className="card-title">Manage Websites</h2>
-            {instances.length > 0 ? ( // Check if there are instances
+            {instances.length > 0 ? (
               <ul className="website-list">
                 {instances.map((instance, index) => (
-                  <div>
-                    <li key={index} className="instance-item">
+                  <div key={index}>
+                    <li className="instance-item">
                       <div className="instance-details">
                         <p className="instance-name">
                           <strong>Instance name: </strong>
@@ -277,6 +336,15 @@ const HostingPage: React.FC = () => {
                         >
                           Terminate Website
                         </button>
+                        <button
+                          type="button" // Change to button to prevent form submission
+                          className="create-button"
+                          onClick={() =>
+                            handleshowwebsite(instance["instance"])
+                          }
+                        >
+                          Show details
+                        </button>
                       </div>
                     </li>
                     {deletepageresponse && (
@@ -290,9 +358,16 @@ const HostingPage: React.FC = () => {
                 ))}
               </ul>
             ) : (
-              <p>No instances available.</p> // Message if no instances
+              <p>No instances available.</p>
             )}
           </div>
+
+          {isSideWindowOpen && selectedInstance && (
+            <SideWindow
+              instance={selectedInstance[0]} // Pass the first instance from the array
+              onClose={() => setIsSideWindowOpen(false)}
+            />
+          )}
         </div>
       )}
     </div>
