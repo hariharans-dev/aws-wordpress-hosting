@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page Not Found</title>
     <script>
-      // Redirect to index.html while preserving the current path
-      var currentPath = window.location.pathname + window.location.search;
-      window.location.href =
-        window.location.origin + "/index.html" + currentPath;
+      // Redirect to the root path, React Router will handle the rest
+      window.location.href = window.location.origin + "/";
     </script>
   </head>
   <body>
