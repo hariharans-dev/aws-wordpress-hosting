@@ -97,7 +97,7 @@ const DashboardPage: React.FC = () => {
           </div>
 
           <div className="dashboard-card">
-            <h2 className="card-title">Active Subscriptions</h2>
+            <h2 className="card-title">Active Running Subscriptions</h2>
             {subscriptions.length > 0 ? (
               // Check if there are subscriptions
               (() => {
