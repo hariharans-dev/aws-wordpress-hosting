@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page Not Found</title>
     <script>
-      // Redirect to the root path and let React Router handle the routing
-      window.location.href = window.location.origin + "/"; // Replace 'repo-name' with your GitHub repo name
+      // Redirect to index.html while preserving the current path
+      var currentPath = window.location.pathname + window.location.search;
+      window.location.href =
+        window.location.origin + "/index.html" + currentPath;
     </script>
   </head>
   <body>
