@@ -4,16 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page Not Found</title>
-    <script type="text/javascript">
-      // Save the current path
-      const pathname = window.location.pathname;
-      const origin = window.location.origin;
-
-      // Redirect to the root and append the original pathname
-      window.location.replace(origin + pathname);
+    <script>
+      // Check if the current path is not the root
+      if (window.location.pathname !== "/") {
+        // Redirect to the root path to allow React Router to handle routing
+        window.location.replace(window.location.origin + "/");
+      }
     </script>
   </head>
   <body>
-    <h1>Redirecting...</h1>
+    <h1>Page Not Found</h1>
   </body>
 </html>
