@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page Not Found</title>
     <script type="text/javascript">
-      // This will redirect back to the same path the user is trying to access
+      // Save the current path
       const pathname = window.location.pathname;
       const origin = window.location.origin;
 
-      // If the path doesn't match a file, it will redirect to the root with the path appended
-      window.location.href = `${origin}/#${pathname}`;
+      // Redirect to the root and append the original pathname
+      window.location.replace(origin + pathname);
     </script>
   </head>
   <body>
