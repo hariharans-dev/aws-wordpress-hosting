@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css"; // Any global styles
 
 import GetStarted from "./components/getstarted"; // Ensure the correct path to the component
