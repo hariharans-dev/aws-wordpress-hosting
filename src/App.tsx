@@ -25,7 +25,7 @@ function App() {
             <Route path="pricing" element={<PricingPage />} />
             <Route path="account" element={<AccountPage />} />
           </Route>
-          <Route path="*" element={<ErrorPage />} />
+          <Route element={<ErrorPage />} />
         </Routes>
       </div>
     </Router>
