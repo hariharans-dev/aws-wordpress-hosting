@@ -10,6 +10,7 @@ import AccountPage from "./components/Home/AccountPage";
 import DashboardPage from "./components/Home/Dashboard";
 import ErrorPage from "./components/ErrorPage";
 import ForgotPassword from "./components/ForgotPassword";
+import ResetPassword from "./components/ResetPassword";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<SignupSignin />} />
           <Route path="/getstarted" element={<GetStarted />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/home" element={<HomePage />}>
             <Route index element={<DashboardPage />} />
             <Route path="hosting" element={<HostingPage />} />

@@ -20,7 +20,7 @@ const SignupSignin: React.FC = () => {
 
   const sendverification_code = async () => {
     var senddata = { request: "forget_password", email: email };
-
+    setemailresponse("");
     try {
       const response = await SendRequest(apiurl, "POST", senddata);
       console.log(response);
