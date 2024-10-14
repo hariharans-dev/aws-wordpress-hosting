@@ -286,14 +286,20 @@ form.sign-in-form {
 }
 
 .forget-password {
-  color:#f7543f;
-  text-decoration: none;
-  transition: color 0.3s ease;
+  display: inline-block; /* Allows padding and margins */
+  padding: 10px 20px; /* Adds space inside the button */
+  font-size: 16px; /* Sets font size */
+  background-color: white; /* Text color */
+  color: #f7543f; /* Button background color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  text-decoration: none; /* Removes underline */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
 }
 
 .forget-password:hover {
-  color: #d12913;
-  text-decoration: underline;
+  color: #d12913; /* Darker shade on hover */
 }
 
 .forget-password:focus {

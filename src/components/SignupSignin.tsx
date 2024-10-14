@@ -123,7 +123,9 @@ const SignupSignin: React.FC = () => {
     }
   };
 
-  const forgetpassword = () => {};
+  const forgetpassword = async () => {
+    navigate("/forgot-password");
+  };
 
   return (
     <div className="container">

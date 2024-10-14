@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import Navbar from "./Home/Navbar";
-
 import "./style/Home.css"; // Import your CSS file
 import { SendRequest } from "./functions/SendRequest";
 
@@ -13,7 +12,7 @@ const apiEndpoint =
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const redirectToLogin = () => {
-    navigate("/");
+    navigate("/"); // Updated to use hash routing
   };
 
   const validateSession = async () => {
@@ -23,6 +22,7 @@ const HomePage: React.FC = () => {
       try {
         const response = await SendRequest(apiEndpoint, "POST", requestData);
         const { statusCode } = response;
+        console.log(response);
         if (statusCode !== 200) {
           redirectToLogin();
           sessionStorage.removeItem("session");
@@ -30,6 +30,8 @@ const HomePage: React.FC = () => {
       } catch (error) {
         console.error("Error:", error);
       }
+    } else {
+      redirectToLogin();
     }
   };
 
