@@ -1,34 +1,91 @@
-from datetime import datetime, timedelta
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import smtplib
 
-# Function to check if current time in IST is between from_time and to_time
-def check_date_valid(from_time, to_time):
-    # Get the current time in UTC
-    current_time_utc = datetime.utcnow()
+def send_html_email(sender_email, app_password, recipient_email, subject, body):
+    try:
+        # Set up the SMTP server
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()  # Start TLS for security
 
-    # Convert the current UTC time to IST by adding 5 hours and 30 minutes
-    ist_offset = timedelta(hours=5, minutes=30)
-    current_time_ist = current_time_utc + ist_offset
+        # Log in to your email account using the App Password
+        server.login(sender_email, app_password)
 
-    # Parse from_time and to_time as datetime objects (assuming they are strings)
-    if isinstance(from_time, str):
-        from_time = datetime.strptime(from_time, "%Y-%m-%d %H:%M:%S")
-    if isinstance(to_time, str):
-        to_time = datetime.strptime(to_time, "%Y-%m-%d %H:%M:%S")
+        # Create a multipart email message
+        msg = MIMEMultipart()
+        msg['From'] = sender_email
+        msg['To'] = recipient_email
+        msg['Subject'] = subject
 
-    # Add the same IST offset to from_time and to_time to ensure they are also in IST
-    from_time_ist = from_time + ist_offset
-    to_time_ist = to_time + ist_offset
+        # Define HTML content with dynamic body
+        html_content = f"""
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Email</title>
+            <style>
+                body {{
+                    font-family: Arial, sans-serif;
+                    background-color: #f4f4f4;
+                    margin: 0;
+                    padding: 20px;
+                }}
+                .container {{
+                    max-width: 600px;
+                    margin: auto;
+                    background: white;
+                    padding: 20px;
+                    border-radius: 5px;
+                    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                }}
+                h1 {{
+                    color: #333;
+                }}
+                p {{
+                    color: #555;
+                }}
+                .footer {{
+                    text-align: center;
+                    margin-top: 20px;
+                    font-size: 12px;
+                    color: #777;
+                }}
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>Hello!</h1>
+                <p>{body}</p>  <!-- Dynamic body content here -->
+                <div class="footer">This email was sent with ❤️ using Python.</div>
+            </div>
+        </body>
+        </html>
+        """
 
-    # Check if the current time in IST is between from_time and to_time
-    return from_time_ist <= current_time_ist <= to_time_ist
+        # Attach the HTML content to the email
+        msg.attach(MIMEText(html_content, 'html'))
+
+        # Send the email
+        server.sendmail(sender_email, recipient_email, msg.as_string())
+
+        print('HTML mail sent successfully!')
+
+    except Exception as e:
+        print(f'Error: {e}')
+
+    finally:
+        # Terminate the SMTP session
+        server.quit()
 
 # Example usage
-from_time = "2024-10-15T08:00:00"  # Example from_time in string format
-to_time = "2024-10-13 12:00:00"    # Example to_time in string format
+if __name__ == "__main__":
+    sender_email = 'hariharans.cloud@gmail.com'  # Your email
+    app_password = 'ofzc apjz zqmg yiwe'       # Your App Password
+    recipient_email = 'dragondragous@gmail.com'  # Recipient's email
+    subject = 'Hello World'                   # Email subject
+    body = 'This is a test email sent using Python with an App Password!'  # Email body
+    
+    send_html_email(sender_email, app_password, recipient_email, subject, body)
 
-is_valid = check_date_valid(from_time, to_time)
-
-if is_valid:
-    print("The current time is within the range.")
-else:
-    print("The current time is outside the range.")

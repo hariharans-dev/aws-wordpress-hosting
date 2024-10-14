@@ -285,6 +285,21 @@ form.sign-in-form {
   pointer-events: all;
 }
 
+.forget-password {
+  color:#f7543f;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forget-password:hover {
+  color: #d12913;
+  text-decoration: underline;
+}
+
+.forget-password:focus {
+  outline: none;
+}
+
 /* Responsive Styles */
 @media (max-width: 870px) {
   .container {

@@ -24,7 +24,6 @@ function App() {
             <Route path="account" element={<AccountPage />} />
           </Route>
           <Route path="*" element={<ErrorPage />} />{" "}
-          {/* Catch-all route for undefined paths */}
         </Routes>
       </div>
     </Router>

@@ -11,10 +11,10 @@ body {
 .error-container {
   text-align: center;
   background-color: #fff; /* White background for the error box */
-  padding: 2rem 3rem; /* Spacing around the content */
+  padding: 20px 20px; /* Spacing around the content */
   border-radius: 10px; /* Rounded corners */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  max-width: 500px; /* Limit width for better presentation */
+  width: 80%; /* Limit width for better presentation */
   position: absolute; /* Positioning for centering */
   top: 50%; /* Center vertically */
   left: 50%; /* Center horizontally */
@@ -45,13 +45,15 @@ body {
   display: inline-block; /* Allows padding and background */
   background-color: #ee6654; /* Primary button color */
   color: #fff; /* White text color */
-  padding: 10px; /* Spacing around button text */
   border: none; /* Remove default border */
   border-radius: 30px; /* Rounded corners for button */
   text-transform: uppercase; /* Uppercase text */
   font-weight: 600; /* Bold text */
   text-decoration: none; /* No underline */
+  text-align: center; /* Center the text horizontally */
+  padding: 10px 20px; /* Add padding for better spacing */
   transition: background-color 0.3s ease; /* Smooth transition on hover */
+  line-height: 1.5; /* Ensures proper vertical alignment */
 }
 
 .btn:hover {

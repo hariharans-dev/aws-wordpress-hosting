@@ -123,6 +123,8 @@ const SignupSignin: React.FC = () => {
     }
   };
 
+  const forgetpassword = () => {};
+
   return (
     <div className="container">
       <div className="forms-container">
@@ -150,6 +152,10 @@ const SignupSignin: React.FC = () => {
               />
             </div>
             <input type="submit" value="Login" className="btn solid" />
+            <a className="forget-password" onClick={() => forgetpassword()}>
+              Forget Password
+            </a>
+
             {signInResponse && (
               <p
                 className={`response-message ${

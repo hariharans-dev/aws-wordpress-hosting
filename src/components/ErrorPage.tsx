@@ -11,8 +11,8 @@ const ErrorPage: React.FC = () => {
         The page you are looking for might have been removed, had its name
         changed, or is temporarily unavailable.
       </p>
-      <Link to="/" className="btn">
-        Go Back Home
+      <Link to="/home" className="btn">
+        Back
       </Link>
     </div>
   );
