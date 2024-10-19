@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import "./style/SignupSignin.css"; // Import your CSS file
 import { SendRequest } from "./functions/SendRequest";
@@ -9,34 +9,10 @@ const apiurl =
 
 const SignupSignin: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
 
-  const checkSessionAndLogin = async () => {
-    const session = sessionStorage.getItem("session");
-    if (session) {
-      const senddata = { request: "session", session: session };
-      try {
-        const response = await SendRequest(apiurl, "POST", senddata);
-        const { statusCode } = response;
-        if (statusCode === 200) {
-          onlogin();
-        } else {
-          sessionStorage.removeItem("session");
-        }
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    }
-  };
-  useEffect(() => {
-    checkSessionAndLogin();
-  }, []);
-
-  const onlogin = () => {
-    navigate("/home");
-  };
-  const onsignup = () => {
-    navigate("getstarted");
-  };
+  const paramresponse = queryParams.get("response");
 
   const [signUpData, setSignUpData] = useState({
     email: "",
@@ -52,6 +28,16 @@ const SignupSignin: React.FC = () => {
 
   const [signUpStatusCode, setsignUpStatusCode] = useState<number>(0);
   const [signInStatusCode, setsignInStatusCode] = useState<number>(0);
+
+  const onlogin = () => {
+    navigate("/home");
+  };
+  const onsignup = () => {
+    navigate("getstarted");
+  };
+  const forgetpassword = () => {
+    navigate("/forgot-password");
+  };
 
   const handleSignUp = () => {
     const container = document.querySelector(".container");
@@ -123,9 +109,30 @@ const SignupSignin: React.FC = () => {
     }
   };
 
-  const forgetpassword = async () => {
-    navigate("/forgot-password");
+  const checkSessionAndLogin = async () => {
+    const session = sessionStorage.getItem("session");
+    if (session) {
+      const senddata = { request: "session", session: session };
+      try {
+        const response = await SendRequest(apiurl, "POST", senddata);
+        const { statusCode } = response;
+        if (statusCode === 200) {
+          onlogin();
+        } else {
+          sessionStorage.removeItem("session");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
   };
+
+  useEffect(() => {
+    if (paramresponse) {
+      setsignInResponse(paramresponse);
+    }
+    checkSessionAndLogin();
+  }, []);
 
   return (
     <div className="container">

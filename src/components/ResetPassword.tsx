@@ -9,6 +9,7 @@ const apiurl_user =
 
 const ResetPassword: React.FC = () => {
   const [searchParams] = useSearchParams();
+
   const navigate = useNavigate();
 
   const [password, setpassword] = useState("");
@@ -20,7 +21,7 @@ const ResetPassword: React.FC = () => {
   const verification_key = searchParams.get("verification_key");
 
   const tologin = () => {
-    navigate("/");
+    navigate("/?response=password reseted");
   };
 
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -60,7 +61,7 @@ const ResetPassword: React.FC = () => {
       const { statusCode, body } = response;
       setresponse(body);
       if (statusCode === 201) {
-        setresponse("Password Updated")
+        setresponse("Password Updated");
         setresponsetype("success");
       } else {
         setresponsetype("error");
@@ -69,6 +70,7 @@ const ResetPassword: React.FC = () => {
       console.error("Error:", error);
     }
   };
+
   return (
     <div className="container">
       <div className="forms-container">

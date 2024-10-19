@@ -84,7 +84,7 @@ const AccountPage: React.FC = () => {
 
   const logout = () => {
     sessionStorage.removeItem("session");
-    navigate("/");
+    navigate("/?response=password changed");
   };
 
   useEffect(() => {
