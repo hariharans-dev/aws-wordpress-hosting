@@ -100,7 +100,7 @@ def send_html_email(sender_email, app_password, recipient_email, verification_ke
 if __name__ == "__main__":
     sender_email = 'hariharans.cloud@gmail.com'  # Your email
     app_password = 'ofzc apjz zqmg yiwe'       # Your App Password
-    recipient_email = 'dragondragous@gmail.com'  # Recipient's email
+    recipient_email = 'hariharan.s2021@vitstudent.ac.in'  # Recipient's email
     subject = 'Hello World'                   # Email subject
     body = 'verificationkey'  # Email body
     website_name="wordpress-host"

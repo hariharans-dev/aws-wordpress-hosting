@@ -21,7 +21,7 @@ const ResetPassword: React.FC = () => {
   const verification_key = searchParams.get("verification_key");
 
   const tologin = () => {
-    navigate("/?response=password reseted");
+    navigate("/");
   };
 
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
