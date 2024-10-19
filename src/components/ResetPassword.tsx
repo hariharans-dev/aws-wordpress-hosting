@@ -4,7 +4,7 @@ import "./style/ForgetPassword.css"; // Import your CSS file
 import { SendRequest } from "./functions/SendRequest";
 import { useNavigate } from "react-router-dom";
 
-const apiurl =
+const apiurl_user =
   "https://vzo16sqfhl.execute-api.ap-south-1.amazonaws.com/stage1/user";
 
 const ResetPassword: React.FC = () => {
@@ -55,7 +55,7 @@ const ResetPassword: React.FC = () => {
       return;
     }
     try {
-      const response = await SendRequest(apiurl, "POST", senddata);
+      const response = await SendRequest(apiurl_user, "POST", senddata);
       console.log(response);
       const { statusCode, body } = response;
       setresponse(body);
